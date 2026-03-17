@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     const token = await signToken({
       userId: user.id,
       email: user.email,
-      names: user.name,
+      name: user.name,
     });
 
     await setAuthCookie(token);
