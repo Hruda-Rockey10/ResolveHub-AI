@@ -34,3 +34,33 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Testing
+
+### Automated Tests (Jest)
+
+The project includes automated tests for:
+
+- Question schema validation
+- Answer schema validation
+- Core question status transition logic (`UNRESOLVED` → `IN_PROGRESS` → `RESOLVED`)
+
+Run tests with:
+
+```bash
+npm test
+```
+
+### Manual End-to-End Validation Performed
+
+- Register flow
+- Login flow
+- Protected route access
+- Question creation
+- Question edit/delete
+- Answer posting
+- Answer acceptance
+- Status transition validation
+- AI tag/difficulty suggestion
+- AI answer drafting
+

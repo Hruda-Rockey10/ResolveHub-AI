@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum QuestionStatus {
+  UNRESOLVED
+  IN_PROGRESS
+  RESOLVED
+}
+
+model User {
+  id        String     @id @default(cuid())
+  name      String
+  email     String     @unique
+  password  String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  questions Question[]
+  answers   Answer[]
+}
+
+model Question {
+  id               String         @id @default(cuid())
+  title            String
+  description      String
+  difficulty       Difficulty?
+  tags             String[]
+  status           QuestionStatus @default(UNRESOLVED)
+  views            Int            @default(0)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  authorId         String
+  author           User           @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  acceptedAnswerId String?        @unique
+  acceptedAnswer   Answer?        @relation("AcceptedAnswer", fields: [acceptedAnswerId], references: [id])
+
+  answers          Answer[]
+}
+
+model Answer {
+  id                  String    @id @default(cuid())
+  content             String
+  isAccepted          Boolean   @default(false)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  questionId          String
+  question            Question  @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  authorId            String
+  author              User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  acceptedForQuestion Question? @relation("AcceptedAnswer")
+}
