@@ -22,7 +22,7 @@ This project goes beyond basic CRUD operations by incorporating thoughtful busin
 - **TypeScript** integration ensures strict type safety and long-term code maintainability.
 
 ### 2. Intelligent AI Integration (OpenRouter)
-- **AI Tag & Difficulty Suggestion:** Uses `meta-llama/llama-3.3-70b-instruct` (via OpenRouter) to automatically analyze question content and suggest appropriate tags and difficulty levels.
+- **AI Tag & Difficulty Suggestion:** Uses `openrouter/hunter-alpha` (via OpenRouter) to automatically analyze question content and suggest appropriate tags and difficulty levels.
 - **AI Draft Answers:** Generates high-quality, concise draft answers to questions with a single click, which users can edit before posting.
 
 ### 3. Comprehensive CRUD & State Management
